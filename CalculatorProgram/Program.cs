@@ -28,6 +28,38 @@ namespace CalculatorProgram
             return result;
         }
 
+        public decimal Multiply(params decimal[] numbers)
+        {
+            if (numbers.Length == 1)
+            {
+                Current *= numbers[0];
+                return Current;
+            }
+
+            var result = numbers[0];
+            for (int i = 1; i <= numbers.Length - 1; i++)
+            {
+                result *= numbers[i];
+            }
+            return result;
+        }
+
+        public decimal Divide(params decimal[] numbers)
+        {
+            if (numbers.Length == 1)
+            {
+                Current /= numbers[0];
+                return Current;
+            }
+
+            var result = numbers[0];
+            for (int i = 1; i <= numbers.Length - 1; i++)
+            {
+                result /= numbers[i];
+            }
+            return result;
+        }
+
         public decimal Reset()
         {
             return Current = 0;
