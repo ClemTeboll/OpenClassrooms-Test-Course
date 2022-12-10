@@ -30,6 +30,7 @@ namespace CalculatorProgram
 
         public decimal Multiply(params decimal[] numbers)
         {
+            ValidateNumbers(numbers);
             if (numbers.Length == 1)
             {
                 Current *= numbers[0];
@@ -42,6 +43,14 @@ namespace CalculatorProgram
                 result *= numbers[i];
             }
             return result;
+        }
+
+        private void ValidateNumbers(decimal[] numbers)
+        {
+            if (numbers.Any(number => number == decimal.MaxValue))
+            {
+                throw new InvalidOperationException("Not a valid number to use");
+            }
         }
 
         public decimal Divide(params decimal[] numbers)

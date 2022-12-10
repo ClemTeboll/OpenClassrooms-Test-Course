@@ -111,5 +111,50 @@ namespace UnitTests
             Assert.Equal((decimal)12.5, result);
             Assert.IsType<decimal>(result);
         }
+
+        [Fact]
+        public void Test_DivideByZero()
+        {
+            // 1) Arrange
+            var calculator = new Calculator();
+
+            Assert.Throws<DivideByZeroException>(() =>
+            {
+                // Act (the actual operation)
+                var result = calculator.Divide(1, 0);
+
+                // Then, Assert
+                Assert.IsType<decimal>(result);
+            });
+        }
+
+        [Fact]
+        public void Test_Validations()
+        {
+            // 1) Arrange
+            var calculator = new Calculator();
+
+            Exception exception = Assert.Throws<InvalidOperationException>(() =>
+            {
+                // Act (the actual operation)
+                var result = calculator.Multiply(decimal.MaxValue, decimal.MaxValue);
+
+                // Then, Assert
+                Assert.IsType<decimal>(result);
+            });
+
+            Assert.Equal("Not a valid number to use", exception.Message);
+
+            exception = Assert.Throws<DivideByZeroException>(() =>
+            {
+                // Act (the actual operation)
+                var result = calculator.Divide(decimal.MaxValue, 0);
+
+                // Then, Assert
+                Assert.IsType<decimal>(result);
+            });
+
+            Assert.IsType<DivideByZeroException>(exception);
+        }
     }
 }
