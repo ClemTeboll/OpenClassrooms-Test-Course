@@ -5,6 +5,11 @@ namespace CalculatorProgram
 {
     public class Calculator
     {
+        static void Main()
+        {
+            Console.WriteLine("L'application est lancée !");
+        }
+
         public decimal Sum(params decimal[] numbers)
         {
             var result = 0.0M;
