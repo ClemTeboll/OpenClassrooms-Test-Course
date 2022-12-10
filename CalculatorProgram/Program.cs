@@ -5,6 +5,8 @@ namespace CalculatorProgram
 {
     public class Calculator
     {
+        public decimal Current { get; private set; }
+
         static void Main()
         {
             Console.WriteLine("App is lauched!");
@@ -12,8 +14,6 @@ namespace CalculatorProgram
 
         public decimal Sum(params decimal[] numbers)
         {
-            decimal Current = 0;
-
             if (numbers.Length == 1)
             {
                 Current += numbers[0];
@@ -26,6 +26,11 @@ namespace CalculatorProgram
                 result += numbers[i];
             }
             return result;
+        }
+
+        public decimal Reset()
+        {
+            return Current = 0;
         }
     }
 }
