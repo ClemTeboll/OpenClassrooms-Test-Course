@@ -84,5 +84,32 @@ namespace UnitTests
             Assert.Equal(-66, result);
             Assert.IsType<decimal>(result);
         }
+
+        [Fact]
+        public void Test_DivideTwoElements()
+        {
+            // 1) Arrange
+            var calculator = new Calculator();
+
+            // Act (the actual operation)
+            var result = calculator.Divide(10, 5);
+
+            // Then, Assert
+            Assert.Equal(2, result);
+        }
+
+        [Fact]
+        public void Test_DivideManyElements()
+        {
+            // 1) Arrange
+            var calculator = new Calculator();
+
+            // Act (the actual operation)
+            var result = calculator.Divide(100, 2, 4);
+
+            // Then, Assert
+            Assert.Equal((decimal)12.5, result);
+            Assert.IsType<decimal>(result);
+        }
     }
 }
